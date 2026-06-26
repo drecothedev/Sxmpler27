@@ -34,9 +34,6 @@ Sxmpler is centered around a `MusicUnderstandingSession`. After a user imports a
 
 - Interactive waveform playback
 - Waveform visualization
-- Detection confidence indicators
-- Additional musical metadata (energy, sections, genre, etc.)
-- Performance optimizations for large audio files
 
 ## Installation
 

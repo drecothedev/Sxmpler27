@@ -61,8 +61,7 @@ class Session {
     
     func getResults() async throws -> Result {
         do {
-            let key = try await analyzeSession().key
-            let bpm = try await analyzeSession().rhythm
+            let (key,bpm) = try await (analyzeSession().key, analyzeSession().rhythm)
             guard let key = key, let keyFirst = key.ranges.first, let bpm = bpm else { throw SessionErrors.result }
             guard let bpm = bpm.beatsPerMinute else { throw SessionErrors.result }
             let adjustedBpm = bpm * 2
