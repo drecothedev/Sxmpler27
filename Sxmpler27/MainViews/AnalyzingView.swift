@@ -7,11 +7,22 @@
 
 import SwiftUI
 
+
 struct AnalyzingView: View {
     @State var session: Session
+    // Checks if analyzing is complete. Experience will provide haptic feedback when complete
+    @State private var isComplete: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ZStack {
+                LoadingView()
+                TypingTextView(text: "Analyzing Audio...", speed: .milliseconds(150))
+            }
+            .sensoryFeedback(.success, trigger: session.uploadStatus == .completed)
+        }
     }
+
 }
 
 #Preview {

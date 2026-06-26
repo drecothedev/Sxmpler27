@@ -7,17 +7,20 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import AVFoundation
 
 struct UploadView: View {
     @State private var showImporter = false
     @State private var isPulsing = false
+    
     var session: Session
 
     var body: some View {
         Button {
             showImporter = true
         } label: {
-            StartButtonView()
+            DefaultButtonView(text: "Start")
+                .animation(.easeIn(duration: 1.0), value: isPulsing)
         }
         .scaleEffect(isPulsing ? 1.0 : 1.05)
         .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: isPulsing)
@@ -30,6 +33,7 @@ struct UploadView: View {
             allowsMultipleSelection: false
         ) { result in
             do {
+                // Handles user file input. Users can only add wav files.
                 let urls = try result.get()
                 guard let url = urls.first else { return }
                 
@@ -44,17 +48,11 @@ struct UploadView: View {
                 
                 Task {
                     do {
-                        session.uploadStatus = .analyzing
                         _ = try await session.loadSession()
-                        try await session.analyzeSession()
-                        session.uploadStatus = .completed
                     } catch {
                         print("Error with session: \(error)")
                     }
                 }
-                
-                print("Selected file:", url.lastPathComponent)
-                
             } catch {
                 print("Import failed:", error)
             }
