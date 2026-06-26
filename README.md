@@ -12,10 +12,12 @@ Sxmpler is an iOS app that simplifies music sampling by analyzing uploaded audio
 - Clean, minimal SwiftUI interface
 
 ## Screenshots
-/Users/andrejones/Downloads/IMG_3392.jpg
-/Users/andrejones/Downloads/IMG_3391.jpg
-/Users/andrejones/Downloads/ScreenRecording_06-26-2026 01-28-33_1.mov
-/Users/andrejones/Downloads/ScreenRecording_06-26-20262-ezgif.com-video-to-gif-converter.mov
+![Starting screen](Screenshots/StartView.jpg)
+![Analyze screen](Screenshots/AnalyzeView.jpg)
+![Analyzing demo](Screenshots/AnalyzingView.gif)
+![Completed demo](Screenshots/CompletedScreen.gif)
+
+
 ## Technologies
 
 - SwiftUI
