@@ -45,9 +45,14 @@ class Session {
     }
     
     func loadSession() async throws {
+        // ass ;)
         guard let ass = asset else { throw SessionErrors.badAsset }
-        currentSession = try await MusicUnderstandingSession(asset: ass)
-        guard let currentSession = currentSession else { throw SessionErrors.loading }
+        do {
+            currentSession = try await MusicUnderstandingSession(asset: ass)
+        } catch {
+            print("Error loading asset: ", error)
+            throw SessionErrors.loading
+        }
     }
     
     func analyzeSession() async throws -> MusicUnderstandingSession.SessionResult {
